@@ -7,10 +7,10 @@ from functools import wraps
 app = Flask(__name__)
 
 # ✅ MySQL Configuration
-app.config["MYSQL_HOST"] = "blogdatabase.cda4o8sw670s.eu-north-1.rds.amazonaws.com"
+app.config["MYSQL_HOST"] = "database-1.cbacqumaoopg.eu-north-1.rds.amazonaws.com"
 app.config["MYSQL_USER"] = "admin"
 app.config["MYSQL_PASSWORD"] = "Pass100123"
-app.config["MYSQL_DB"] = "blogdatabase"
+app.config["MYSQL_DB"] = "database-1"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
 # ✅ Initialize MySQL
@@ -18,6 +18,15 @@ mysql = MySQL(app)
 
 # ✅ Secret Key for Sessions
 app.secret_key = "secret123"
+@app.route("/test_rds")
+def test_rds():
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT 1")
+        cur.close()
+        return "✅ RDS connection successful"
+    except Exception as e:
+        return f"❌ Error: {e}"
 
 # ✅ Home Route
 @app.route("/")
