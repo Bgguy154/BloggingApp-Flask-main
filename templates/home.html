@@ -1,38 +1,18 @@
-{% extends 'layout.html' %} {% block body %}
+{% extends 'layout.html' %} 
+{% block body %}
 
-<div
-  class="text-center"
-  style="
-    background: linear-gradient(to right, #c3bab1, #cf5e25);
-    border-radius: 8px;
-    padding: 2rem;
-  "
->
-  <h1 style="font-family: 'Dancing Script', cursive">Welcome To Web Feed</h1>
-  <p class="lead" style="font-family: 'Dancing Script', cursive">
+<div class="webfeed-container">
+  <h1 class="webfeed-heading">Welcome To News App</h1>
+  <p class="lead webfeed-lead">
     This application is built on the Python Flask framework.
   </p>
 
   {% if session.logged_in is none %}
-  <a
-    href="/register"
-    style="font-family: 'Dancing Script', cursive"
-    class="btn btn-primary btn-lg"
-    >Register</a
-  >
-  <a
-    href="/login"
-    style="font-family: 'Dancing Script', cursive"
-    class="btn btn-success btn-lg"
-    >Login</a
-  >
+    <a href="/register" class="btn btn-primary btn-lg webfeed-btn">Register</a>
+    <a href="/login" class="btn btn-success btn-lg webfeed-btn">Login</a>
   {% else %}
-  <a
-    href="/articles"
-    style="font-family: 'Dancing Script', cursive"
-    class="btn btn-warning btn-lg"
-    >Articles</a
-  >
+    <a href="/articles" class="btn btn-warning btn-lg webfeed-btn">Articles</a>
   {% endif %}
 </div>
+
 {% endblock %}
