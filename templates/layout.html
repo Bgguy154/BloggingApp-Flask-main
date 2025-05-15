@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Web Feed App</title>
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body
+    style="
+      background: linear-gradient(to right, #c3bab1, #cf5e25);
+      border-radius: 8px;
+      padding: 2rem;
+    "
+  >
+    {% include 'includes/_navbar.html' %}
+    <div class="container">
+      {% include 'includes/_messages.html' %} {% block body %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CKEditor 5 (Only One Version) -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
+
+    <script>
+      ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
+        console.error("CKEditor 5 Error:", error);
+      });
+    </script>
+  </body>
+</html>
